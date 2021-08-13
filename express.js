@@ -1,9 +1,11 @@
 var express = require('express');
-var bodyParser = require('body-parser');
 var app = express();
+var routes = require('./routes');
 
-app.use(bodyParser.urlencoded({extended: true}));
-app.use(bodyParser.json());
+app.use(express.urlencoded({extended: true}));
+app.use(express.json());
+
+app.use('/api', routes);
 
 app.get('/', (req, res) => {
     res.send("in get");
